@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Анализ цен Додо Пицца | Додокоины</title>
     <link rel="stylesheet" href="static/style.css">
-    <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="static/dodocoin.svg" type="image/svg+xml">
     <meta name="description" content="Анализ выгодности использования додокоинов в Додо Пицца. Сравнение цен товаров в рублях и бонусной валюте.">
+    <meta name="theme-color" content="#ff6900">
 </head>
 <body>
     <header>
@@ -90,6 +91,99 @@
         <p>© 2025 | Не является официальным сайтом Додо Пицца | <a href="https://github.com/kidavspb/dodocoins" target="_blank">Исходный код</a></p>
     </footer>
 
-    <script src="static/js/app.js" type="module"></script>
+    <div class="back-to-top" id="backToTop" title="Наверх">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"></path>
+        </svg>
+    </div>
+
+    <script>
+        // Функция для показа информации о выгодности
+        function showValueInfo(event, rate, value) {
+            const tooltip = document.querySelector('.tooltip') || document.createElement('div');
+            
+            if (!document.querySelector('.tooltip')) {
+                tooltip.className = 'tooltip';
+                document.body.appendChild(tooltip);
+                
+                // Скрытие тултипа при клике на документ
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.card-value')) {
+                        tooltip.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Предотвращаем всплытие события
+            event.stopPropagation();
+            
+            // Определяем текст в зависимости от выгодности
+            let valueLevel = "";
+            const valueNum = parseInt(value);
+            
+            if (valueNum > 90) {
+                valueLevel = "Очень выгодно";
+            } else if (valueNum > 75) {
+                valueLevel = "Выгодно";
+            } else if (valueNum > 50) {
+                valueLevel = "Средняя выгодность";
+            } else if (valueNum > 25) {
+                valueLevel = "Невыгодно";
+            } else {
+                valueLevel = "Очень невыгодно";
+            }
+            
+            // Устанавливаем текст тултипа
+            tooltip.innerHTML = `
+                <div class="tooltip-header">${valueLevel}</div>
+                <div class="tooltip-content">
+                    <p>Курс обмена: <strong>${rate} ₽/додокоин</strong></p>
+                    <p>Выгодность: <strong>${value}%</strong></p>
+                    <p class="tooltip-explanation">Чем выше процент выгодности, тем выгоднее использовать додокоины для покупки этого товара.</p>
+                </div>
+            `;
+            
+            // Позиционируем тултип
+            const rect = event.currentTarget.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            
+            tooltip.style.top = (rect.bottom + scrollTop + 10) + 'px';
+            tooltip.style.left = (rect.left + scrollLeft) + 'px';
+            
+            // Проверяем, не выходит ли тултип за пределы экрана справа
+            const tooltipRect = tooltip.getBoundingClientRect();
+            if (tooltipRect.right > window.innerWidth) {
+                tooltip.style.left = (window.innerWidth - tooltipRect.width - 20) + 'px';
+            }
+            
+            // Показываем тултип
+            tooltip.style.display = 'block';
+        }
+
+        // Кнопка "Наверх"
+        document.addEventListener('DOMContentLoaded', () => {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            // Показать/скрыть кнопку при прокрутке
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            // Прокрутка наверх при клике
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+    <script src="static/js/app.js"></script>
 </body>
 </html>

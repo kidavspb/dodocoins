@@ -13,7 +13,7 @@ let worstRate = 0;
 // Загрузка данных из JSON файла
 async function loadData() {
     try {
-        const response = await fetch('static/data.json');
+        const response = await fetch('static/products.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -206,49 +206,16 @@ function renderCards(productsToShow) {
     const gridContainer = document.getElementById('grid-view');
     gridContainer.innerHTML = '';
     
-    // Группировка товаров по категориям и подкатегориям
-    const groupedProducts = {};
-    
-    productsToShow.forEach(product => {
-        const categoryKey = product.category;
-        const subCategoryKey = product.coins.toString();
-        
-        if (!groupedProducts[categoryKey]) {
-            groupedProducts[categoryKey] = {};
-        }
-        
-        if (!groupedProducts[categoryKey][subCategoryKey]) {
-            groupedProducts[categoryKey][subCategoryKey] = [];
-        }
-        
-        groupedProducts[categoryKey][subCategoryKey].push(product);
-    });
-    
-    // Отображение товаров по группам
-    Object.entries(groupedProducts).forEach(([categoryKey, subCategories]) => {
-        // Для каждой подкатегории создаем заголовок и карточки
-        Object.entries(subCategories).forEach(([subCategoryKey, subCategoryProducts]) => {
-            // Название подкатегории
-            const subCategoryName = categories[categoryKey]?.subCategories[subCategoryKey] || 
-                                   `${subCategoryKey} додокоинов`;
-            
-            // Создаем заголовок подкатегории
-            const heading = document.createElement('h3');
-            heading.className = 'subcategory-heading';
-            heading.textContent = `${getCategoryName(categoryKey)} - ${subCategoryName}`;
-            gridContainer.appendChild(heading);
-            
-            // Создаем карточки товаров
-            subCategoryProducts.forEach(product => {
-                createProductCard(product, gridContainer);
-            });
-        });
-    });
-    
     // Если нет товаров для отображения
     if (productsToShow.length === 0) {
         gridContainer.innerHTML = '<div class="loading">Нет товаров, соответствующих фильтрам</div>';
+        return;
     }
+
+    // Создаем карточки для всех товаров
+    productsToShow.forEach(product => {
+        createProductCard(product, gridContainer);
+    });
 }
 
 /**
@@ -283,17 +250,29 @@ function createProductCard(product, container) {
     } else if (isWorstRate) {
         badgeHTML = '<span class="best-value" style="background-color: #f44336;">Худший курс</span>';
     }
+
+    // Получаем информацию о подкатегории
+    const coinValue = product.coins.toString();
+    const categoryInfo = categories[product.category];
+    const subcategoryName = categoryInfo?.subCategories[coinValue] || `${coinValue} додокоинов`;
     
     card.innerHTML = `
         <div class="card-header">
-            <span>${displayName}${badgeHTML}</span>
-            <span class="coin-badge"><span class="coin-icon"></span> ${product.coins}</span>
+            <div class="title-container">
+                <span>${displayName}</span>
+                <span class="category-badge">${getCategoryName(product.category)} · ${subcategoryName}</span>
+                ${badgeHTML}
+            </div>
+            <span class="coin-badge">
+                <span class="coin-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="currentColor" fill-rule="evenodd" d="M11 1a1 1 0 0 1 1 1v2a8 8 0 1 1 0 16v2a1 1 0 1 1-2 0v-2H6.6c-.56 0-.84 0-1.05-.1a1 1 0 0 1-.44-.45C5 19.24 5 18.96 5 18.4V5.6c0-.56 0-.84.1-1.05a1 1 0 0 1 .45-.44C5.76 4 6.04 4 6.6 4H10V2a1 1 0 0 1 1-1m1 17a6 6 0 0 0 0-12H7v12z" clip-rule="evenodd"/>
+                    </svg>
+                </span>
+                ${product.coins}
+            </span>
         </div>
         <div class="card-body">
-            <div class="card-info">
-                <div>Категория:</div>
-                <span>${getCategoryName(product.category)}</span>
-            </div>
             ${product.volume ? `
             <div class="card-info">
                 <div>Объем/размер:</div>
@@ -304,17 +283,15 @@ function createProductCard(product, container) {
                 <div>Цена в рублях:</div>
                 <span>${product.rubles} ₽</span>
             </div>
-            <div class="card-info">
-                <div>Цена в додокоинах:</div>
-                <span>${product.coins}</span>
-            </div>
-            <div class="card-value ${valueClass}">
-                <span class="label">Курс обмена:</span>
-                <span>${product.rate} ₽/додокоин</span>
-            </div>
-            <div class="card-value ${valueClass}">
-                <span class="label">Выгодность:</span>
-                <span>${product.value}%</span>
+            <div class="card-values">
+                <div class="card-value ${valueClass}" onclick="showValueInfo(event, '${product.rate}', '${product.value}')">
+                    <span class="label">Курс обмена:</span>
+                    <span>${product.rate} ₽/додокоин</span>
+                </div>
+                <div class="card-value ${valueClass}" onclick="showValueInfo(event, '${product.rate}', '${product.value}')">
+                    <span class="label">Выгодность:</span>
+                    <span>${product.value}%</span>
+                </div>
             </div>
         </div>
     `;
@@ -357,9 +334,14 @@ function renderTable(productsToShow) {
             badgeHTML = '<span class="best-value" style="background-color: #f44336;">Худший</span>';
         }
         
+        // Получаем информацию о подкатегории
+        const coinValue = product.coins.toString();
+        const categoryInfo = categories[product.category];
+        const subcategoryName = categoryInfo?.subCategories[coinValue] || `${coinValue} додокоинов`;
+        
         row.innerHTML = `
             <td>${displayName}${badgeHTML}</td>
-            <td>${getCategoryName(product.category)}</td>
+            <td>${getCategoryName(product.category)} · ${subcategoryName}</td>
             <td>${product.rubles} ₽</td>
             <td>${product.coins}</td>
             <td>${product.rate}</td>

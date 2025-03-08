@@ -81,8 +81,8 @@ button:hover {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
     margin-bottom: 30px;
 }
 
@@ -91,11 +91,15 @@ button:hover {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
@@ -106,7 +110,14 @@ button:hover {
     font-size: 18px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    min-height: 60px;
+}
+
+.card-header .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .card-header .coin-badge {
@@ -117,20 +128,40 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 4px;
+    white-space: nowrap;
+    margin-left: 5px;
+    flex-shrink: 0;
+}
+
+.category-badge {
+    display: inline-block;
+    font-size: 12px;
+    background-color: rgba(0,0,0,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 4px;
 }
 
 .card-body {
     padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-info {
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+    height: 25px;
 }
 
 .card-info span {
     color: var(--dark-gray);
+}
+
+.card-values {
+    margin-top: auto;
 }
 
 .card-value {
@@ -138,9 +169,15 @@ button:hover {
     justify-content: space-between;
     padding: 10px 15px;
     background-color: var(--light-orange);
-    margin-top: 15px;
+    margin-top: 10px;
     border-radius: 4px;
     font-weight: bold;
+    height: 42px;
+    cursor: pointer;
+}
+
+.card-value:hover {
+    background-color: #ffe0cc;
 }
 
 .card-value .label {
@@ -151,8 +188,16 @@ button:hover {
     background-color: #e6fff0;
 }
 
+.bargain:hover {
+    background-color: #d1ffe0;
+}
+
 .expensive {
     background-color: #ffe6e6;
+}
+
+.expensive:hover {
+    background-color: #ffd1d1;
 }
 
 .best-value {
@@ -162,7 +207,8 @@ button:hover {
     border-radius: 20px;
     font-size: 12px;
     font-weight: bold;
-    margin-left: 10px;
+    margin-top: 5px;
+    display: inline-block;
 }
 
 .table-view {
@@ -267,21 +313,16 @@ footer a:hover {
 }
 
 .coin-icon {
-    display: inline-block;
+    display: inline-flex;
     width: 16px;
     height: 16px;
-    background-color: #FFA500;
-    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
 }
 
-.category-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    margin-left: 8px;
-    background-color: var(--light-orange);
-    color: var(--dark-gray);
+.coin-icon svg {
+    width: 100%;
+    height: 100%;
 }
 
 .loading {
@@ -291,13 +332,71 @@ footer a:hover {
     color: var(--dark-gray);
 }
 
-.subcategory-heading {
-    margin: 20px 0 10px;
-    padding: 10px;
-    background-color: var(--light-orange);
-    border-radius: 4px;
-    color: var(--dark-gray);
+.tooltip {
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 300px;
+    min-width: 250px;
+    overflow: hidden;
+}
+
+.tooltip-header {
+    background-color: var(--orange);
+    color: white;
+    padding: 8px 12px;
     font-weight: bold;
+}
+
+.tooltip-content {
+    padding: 12px;
+}
+
+.tooltip-content p {
+    margin: 5px 0;
+}
+
+.tooltip-explanation {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--dark-gray);
+    color: white;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 99;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--orange);
+}
+
+.active {
+    background-color: #e05e00;
 }
 
 @media (max-width: 768px) {

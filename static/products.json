@@ -1,0 +1,380 @@
+{
+  "products": [
+    {
+      "name": "Барбекю",
+      "category": "sauces",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 49,
+      "coins": 60
+    },
+    {
+      "name": "Сырный",
+      "category": "sauces",
+      "size": null, 
+      "volume": "1 шт",
+      "rubles": 49,
+      "coins": 60
+    },
+    {
+      "name": "Чесночный",
+      "category": "sauces",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 49,
+      "coins": 60
+    },
+    
+    {
+      "name": "Кофе Американо",
+      "category": "drinks",
+      "size": null,
+      "volume": "0,4 л",
+      "rubles": 109,
+      "coins": 200
+    },
+    {
+      "name": "Кофе Капучино",
+      "category": "drinks",
+      "size": null,
+      "volume": "0,4 л",
+      "rubles": 179,
+      "coins": 200
+    },
+    {
+      "name": "Кофе Латте",
+      "category": "drinks",
+      "size": null,
+      "volume": "0,4 л",
+      "rubles": 179,
+      "coins": 200
+    },
+    {
+      "name": "Добрый Кола",
+      "category": "drinks",
+      "size": null,
+      "volume": "0,5 л",
+      "rubles": 145,
+      "coins": 200
+    },
+    {
+      "name": "Добрый Кола без сахара",
+      "category": "drinks",
+      "size": null,
+      "volume": "0,5 л",
+      "rubles": 145,
+      "coins": 200
+    },
+    {
+      "name": "Добрый Лимон-Лайм",
+      "category": "drinks",
+      "size": null,
+      "volume": "0,5 л",
+      "rubles": 135,
+      "coins": 200
+    },
+    
+    {
+      "name": "Додобоны",
+      "category": "desserts",
+      "size": null,
+      "volume": "8 шт",
+      "rubles": 115,
+      "coins": 250
+    },
+    {
+      "name": "Маффин Соленая карамель",
+      "category": "desserts",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 119,
+      "coins": 250
+    },
+    {
+      "name": "Маффин Три шоколада",
+      "category": "desserts",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 119,
+      "coins": 250
+    },
+    {
+      "name": "Чизкейк Нью-Йорк",
+      "category": "desserts",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 179,
+      "coins": 250
+    },
+    
+    {
+      "name": "Грибной Стартер",
+      "category": "starters",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 219,
+      "coins": 280
+    },
+    {
+      "name": "Додстер",
+      "category": "starters",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 219,
+      "coins": 280
+    },
+    {
+      "name": "Острый Додстер",
+      "category": "starters",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 239,
+      "coins": 280
+    },
+    {
+      "name": "Супермясной Додстер",
+      "category": "starters",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 269,
+      "coins": 280
+    },
+    {
+      "name": "Сырный Стартер",
+      "category": "starters",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 219,
+      "coins": 280
+    },
+    
+    {
+      "name": "Дэнвич ветчина и сыр",
+      "category": "snacks",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 289,
+      "coins": 300
+    },
+    {
+      "name": "Дэнвич чоризо барбекю",
+      "category": "snacks",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 289,
+      "coins": 300
+    },
+    {
+      "name": "Картофель из печи",
+      "category": "snacks",
+      "size": null,
+      "volume": "Большая",
+      "rubles": 269,
+      "coins": 300
+    },
+    {
+      "name": "Салат Цезарь",
+      "category": "snacks",
+      "size": null,
+      "volume": "1 шт",
+      "rubles": 289,
+      "coins": 300
+    },
+    
+    {
+      "name": "Аррива!",
+      "category": "pizza",
+      "size": 25,
+      "volume": "традиционное",
+      "rubles": 579,
+      "coins": 580
+    },
+    {
+      "name": "Бефстроганов",
+      "category": "pizza",
+      "size": 25,
+      "volume": "традиционное",
+      "rubles": 499,
+      "coins": 580
+    },
+    {
+      "name": "Карбонара",
+      "category": "pizza",
+      "size": 25,
+      "volume": "традиционное",
+      "rubles": 589,
+      "coins": 580
+    },
+    {
+      "name": "Пепперони",
+      "category": "pizza",
+      "size": 25,
+      "volume": "традиционное",
+      "rubles": 489,
+      "coins": 580
+    },
+    {
+      "name": "Четыре сезона",
+      "category": "pizza",
+      "size": 25,
+      "volume": "традиционное",
+      "rubles": 489,
+      "coins": 580
+    },
+    {
+      "name": "Песто",
+      "category": "pizza",
+      "size": 25,
+      "volume": "традиционное",
+      "rubles": 559,
+      "coins": 580
+    },
+    {
+      "name": "Сырная",
+      "category": "pizza",
+      "size": 25,
+      "volume": "традиционное",
+      "rubles": 329,
+      "coins": 580
+    },
+    
+    {
+      "name": "Аррива!",
+      "category": "pizza",
+      "size": 30,
+      "volume": "традиционное",
+      "rubles": 859,
+      "coins": 850
+    },
+    {
+      "name": "Бефстроганов",
+      "category": "pizza",
+      "size": 30,
+      "volume": "традиционное",
+      "rubles": 769,
+      "coins": 850
+    },
+    {
+      "name": "Пепперони",
+      "category": "pizza",
+      "size": 30,
+      "volume": "традиционное",
+      "rubles": 749,
+      "coins": 850
+    },
+    {
+      "name": "Песто",
+      "category": "pizza",
+      "size": 30,
+      "volume": "традиционное",
+      "rubles": 879,
+      "coins": 850
+    },
+    {
+      "name": "Сырный цыпленок",
+      "category": "pizza",
+      "size": 30,
+      "volume": "традиционное",
+      "rubles": 869,
+      "coins": 850
+    },
+    {
+      "name": "Цыпленок барбекю",
+      "category": "pizza",
+      "size": 30,
+      "volume": "традиционное",
+      "rubles": 959,
+      "coins": 850
+    },
+    
+    {
+      "name": "Бефстроганов",
+      "category": "pizza",
+      "size": 35,
+      "volume": "традиционное",
+      "rubles": 899,
+      "coins": 900
+    },
+    {
+      "name": "Карбонара",
+      "category": "pizza",
+      "size": 35,
+      "volume": "традиционное",
+      "rubles": 1059,
+      "coins": 900
+    },
+    {
+      "name": "Маргарита",
+      "category": "pizza",
+      "size": 35,
+      "volume": "традиционное",
+      "rubles": 889,
+      "coins": 900
+    },
+    {
+      "name": "Четыре сезона",
+      "category": "pizza",
+      "size": 35,
+      "volume": "традиционное",
+      "rubles": 919,
+      "coins": 900
+    },
+    {
+      "name": "Песто",
+      "category": "pizza",
+      "size": 35,
+      "volume": "традиционное",
+      "rubles": 1029,
+      "coins": 900
+    },
+    {
+      "name": "Сырный цыпленок",
+      "category": "pizza",
+      "size": 35,
+      "volume": "традиционное",
+      "rubles": 999,
+      "coins": 900
+    }
+  ],
+  
+  "categories": {
+    "pizza": {
+      "name": "Пицца",
+      "subCategories": {
+        "580": "Маленькие (25 см)",
+        "850": "Средние (30 см)",
+        "900": "Большие (35 см)"
+      }
+    },
+    "drinks": {
+      "name": "Напитки",
+      "subCategories": {
+        "200": "Напитки"
+      }
+    },
+    "desserts": {
+      "name": "Десерты",
+      "subCategories": {
+        "250": "Десерты"
+      }
+    },
+    "sauces": {
+      "name": "Соусы",
+      "subCategories": {
+        "60": "Соусы"
+      }
+    },
+    "starters": {
+      "name": "Додстеры и Стартеры",
+      "subCategories": {
+        "280": "Додстеры и Стартеры"
+      }
+    },
+    "snacks": {
+      "name": "Закуски",
+      "subCategories": {
+        "300": "Закуски"
+      }
+    }
+  }
+}
