@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анализ цен Додо Пицца</title>
+    <title>Анализ цен Додо Пицца | Додокоины</title>
     <link rel="stylesheet" href="static/style.css">
-    <!-- <link rel="icon" href="img/favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+    <meta name="description" content="Анализ выгодности использования додокоинов в Додо Пицца. Сравнение цен товаров в рублях и бонусной валюте.">
 </head>
 <body>
     <header>
@@ -39,13 +40,9 @@
         <div class="filter-group">
             <select id="category-filter">
                 <option value="all">Все категории</option>
-                <option value="pizza">Пицца</option>
-                <option value="drinks">Напитки</option>
-                <option value="snacks">Закуски</option>
-                <option value="desserts">Десерты</option>
-                <option value="sauce">Соусы</option>
+                <!-- Категории будут добавлены через JavaScript -->
             </select>
-            <select id="size-filter">
+            <select id="size-filter" class="hidden">
                 <option value="all">Все размеры</option>
                 <option value="25">25 см</option>
                 <option value="30">30 см</option>
@@ -78,7 +75,7 @@
             <thead>
                 <tr>
                     <th data-sort="name">Название</th>
-                    <th data-sort="specs">Характеристики</th>
+                    <th data-sort="category">Категория</th>
                     <th data-sort="rubles">Цена (₽)</th>
                     <th data-sort="coins">Додокоины</th>
                     <th data-sort="rate">Курс (₽/додокоин)</th>
@@ -90,13 +87,9 @@
     </div>
 
     <footer>
-        <p>© 2025 Анализ Додо Цен - Открытый проект</p>
-        <p>Информация о ценах не является публичной офертой, актуальные цены уточняйте у Додо Пицца</p>
-        <a href="https://github.com/kidavspb/dodocoins" target="_blank">GitHub Репозиторий</a>
+        <p>© 2025 | Не является официальным сайтом Додо Пицца | <a href="https://github.com/kidavspb/dodocoins" target="_blank">Исходный код</a></p>
     </footer>
 
-    <script src="static/js/data.js"></script>
-    <script src="static/js/utils.js"></script>
-    <script src="static/js/app.js"></script>
+    <script src="static/js/app.js" type="module"></script>
 </body>
 </html>
