@@ -255,12 +255,19 @@ function createProductCard(product, container) {
     const coinValue = product.coins.toString();
     const categoryInfo = categories[product.category];
     const subcategoryName = categoryInfo?.subCategories[coinValue] || `${coinValue} додокоинов`;
+    const categoryName = getCategoryName(product.category);
+    
+    // Определяем, нужно ли отображать подкатегорию
+    let categoryDisplay = categoryName;
+    if (subcategoryName !== categoryName) {
+        categoryDisplay += ` · ${subcategoryName}`;
+    }
     
     card.innerHTML = `
         <div class="card-header">
             <div class="title-container">
                 <span>${displayName}</span>
-                <span class="category-badge">${getCategoryName(product.category)} · ${subcategoryName}</span>
+                <span class="category-badge">${categoryDisplay}</span>
                 ${badgeHTML}
             </div>
             <span class="coin-badge">
@@ -338,10 +345,17 @@ function renderTable(productsToShow) {
         const coinValue = product.coins.toString();
         const categoryInfo = categories[product.category];
         const subcategoryName = categoryInfo?.subCategories[coinValue] || `${coinValue} додокоинов`;
+        const categoryName = getCategoryName(product.category);
+        
+        // Определяем, нужно ли отображать подкатегорию
+        let categoryDisplay = categoryName;
+        if (subcategoryName !== categoryName) {
+            categoryDisplay += ` · ${subcategoryName}`;
+        }
         
         row.innerHTML = `
             <td>${displayName}${badgeHTML}</td>
-            <td>${getCategoryName(product.category)} · ${subcategoryName}</td>
+            <td>${categoryDisplay}</td>
             <td>${product.rubles} ₽</td>
             <td>${product.coins}</td>
             <td>${product.rate}</td>
